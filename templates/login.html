@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input_s {
+            padding: 8px;
+            margin: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body style="margin: auto,width=50%"> 
+    {% if is_login %}
+        <h1>User is logged now</h1>
+    {% else %}
+        {% if request.user.is_authenticated %}
+
+            <h1> You are already logged In. Why are you here? </h1>
+            <h2> <a href="/"> GO to home page </a> </h2>
+
+        {% else %}
+            <h1> Login yourself </h1>
+            <form method="post">
+            {% csrf_token %}
+            <input name="username" class="input_s" type="text" placeholder="add your username"> <br>
+            <input name="password" class="input_s"  type="password" placeholder="add your password"> <br>
+            <input class="input_s"  type="submit" >
+            </form>
+
+
+        {% endif %}
+
+
+    {% endif %}
+
+
+
+    
+</body>
+</html>

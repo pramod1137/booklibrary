@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Home Page</title>
+</head>
+
+<body>
+
+    <h1> Welcome to my Library </h1>
+
+    {% if request.user.is_authenticated %}
+        <p>  {{ request.user.username }}</p>
+        <p> <a href="/account/logout/">Click here to logout </a> </p>
+    {% else %}
+        <p> <a href="/account/login/">login</a>  </p>
+        <p> <a href="/account/register/">register</a>  </p>
+    {% endif %}
+
+    {% for book in name %}
+    <h1> {{book.title}} </h1>
+    <h2> {{book.publisher.name}}</h2>
+        {%if book.img %} 
+            <img width='480px' src="/media/{{book.img}}" alt="book.title">
+        {% endif %}
+    
+{% endfor %}
+
+
+
+
+    
+</body>
+</html>
